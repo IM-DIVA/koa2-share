@@ -1,6 +1,7 @@
 // ctx是挂载的全局对象
 // 当处在洋葱模型中的时候，可以被其他中间件所取到
 const pv = (ctx) => {
+    ctx.session.count++
     global.console.log(`pv: ${ctx.path}`);
 }
 

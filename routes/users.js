@@ -4,6 +4,9 @@ const Person = require('../dbs/models/person')
 
 router.prefix('/users')
 
+const Redis = require('koa-redis')
+const Store = new Redis().client
+
 router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
@@ -60,6 +63,14 @@ router.get('/removePerson', async (ctx) => {
   const result = await Person.where({
     name: ctx.request.query.name
   }).remove()
+  ctx.body = {
+    code: 0
+  }
+})
+
+// redis 
+router.get('/fix', async (ctx) => {
+  const st = await Store.hset('fix', 'name', Math.random())
   ctx.body = {
     code: 0
   }
