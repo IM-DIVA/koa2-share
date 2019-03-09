@@ -10,6 +10,13 @@ const logger = require('koa-logger')
 // const m2 = require('./middleware/m2')
 // const m3 = require('./middleware/m3')
 
+const mongoose = require('mongoose')
+const dbConfig = require('./dbs/config')
+
+mongoose.connect(dbConfig.dbs, {
+	useNewUrlParser: true
+})
+
 const index = require('./routes/index')
 const users = require('./routes/users')
 

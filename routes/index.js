@@ -21,7 +21,7 @@ router.get('/json', async (ctx, next) => {
 router.get('/testAsync', async (ctx, next) => {
 	global.console.log(`start a: ${new Date().getTime()}`);
 	const a = await new Promise((resolve, reject) => {
-		setTimeout(() => {
+		setTimeout(() => { 
 			global.console.log(`async a: ${new Date().getTime()}`);
 			resolve('a');
 		}, 1000);
